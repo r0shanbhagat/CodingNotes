@@ -1,3 +1,4 @@
+
 ## **Problem: Find Fraudulent Activity from Logs**
 A Company parses **logs of online store** user **transactions/activity to flag fraudulent activity.**
 The log file is represented as an **Array** of arrays. The arrays consist of the following data:
@@ -96,4 +97,19 @@ Given the following counts of userids, there are only 3 userids that meet or exc
       processLogs(input, threshold).forEach(System.out::println);  
       }  
     }
+
+## Explanation
+- According to problem statement  we have “senderId recipientId Amount” ,to solve this while accessing the logs list we need to maintain the map which contains the distinct sender , recipient (as **Key)** and transaction count (as value) for corresponding sender/recipient. 
+
+- We’re going to update the “transaction Count“ if we found the particular user 		involved in any transaction (while accessing the logs).
+   **map.put(log[0], map.getOrDefault(log[0], 0) + 1);**
+  If senderId==recipientId we’r going  to treat that transaction as single transaction and count will be not increased!!
+  
+ - Once  we have the sender , recipient  list and their total transaction count  we’re going to compare the count value against the Threshold value and  it’s matches we’re adding in list suspecting that user transaction is suspicious.
+
+- At last we’re going to sort the list in ascending order before returning to result.
+
+**Order of the Algorithm**
+we can have **O(N)** complexity to filter out all the user ids above threshold and O(KlogK) to sort the filters user id. K is the result size and K <= N. Althought we have O(NlogN) in worst case scenario,
+
 LetsCode Discussion Forum:https://leetcode.com/discuss/interview-question/989768/amazon-oa-2020-transaction-logs
