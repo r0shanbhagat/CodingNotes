@@ -1,8 +1,6 @@
 # GiftingGroups problem
 ### Problem statement
-
 Amazon is working on grouping people in audible groups. You are given a list of integers which are pictorially repesented as 2D matrix
-
 **Input List**  
 110, 110, 001
 
@@ -131,4 +129,19 @@ The following code snippet implements the above algorithm:
         }  
     }
 
-Reference url:https://www.educative.io/edpresso/the-friend-circle-problem
+## Explanation
+
+As per given Problem statement  to solve this , first we’ll divide our inputs into matrix ,we can called it as **adjacency matrix, and we** have to find the number of connect components:
+Lets divide the problem in **below alogrithm:**
+-   Initialize a list/array, visited, to keep track of visited vertices of size **n** with **0** as the initial value at each index.
+-   For every vertex v, if visited[v] is 0, traverse the graph using DFS; else, move to the next v.
+-   Set visited[v] to **1** for every v that the DFS traversal encounters.
+-   When the DFS traversal terminates, increment the audile Group counter by **1** as it means that one whole connected component has been traversed. 
+- Repeat the above steps till all the students are visited.
+-  Return noOfCircles.
+
+**Order of the Algorithm**
+Time Complexity is O(n^2)  
+Space Complexity is O(n)
+
+Discussion Forum: https://leetcode.com/discuss/interview-question/912928/amazon-oa-2020-gifting-groups-friend-circle-lc-doesnt-solve-this
